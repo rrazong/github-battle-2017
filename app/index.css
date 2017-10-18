@@ -1,0 +1,177 @@
+body {
+  font-family: Roboto, Arial;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+h1, h2, h3 {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.button-cta {
+  border-radius: 5px;
+  font-size: 20px;
+  margin: 20px;
+  width: 200px;
+}
+
+.button-cta:hover {
+  cursor: pointer;
+}
+
+.home {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav {
+  font-weight: bold;
+}
+
+.nav-link {
+  margin-right: 10px;
+}
+
+.languages {
+  display: flex;
+  justify-content: center;
+}
+
+.languages-item {
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+.languages-item--selected,
+.nav-link--selected {
+  color: red;
+}
+
+.repos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.repos-item {
+  align-items: center;
+  border: 1px solid gray;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 10px;
+  padding: 10px;
+  position: relative;
+  width: 200px;
+}
+
+.repos-rank {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+
+.repos-avatar {
+  border-radius: 10px;
+  height: 50px;
+  width: 50px;
+}
+
+.battle {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+}
+
+.battle-players {
+  align-content: space-around;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+
+.battle-actions {
+  margin: 10px auto;
+}
+
+.player-form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.player-username-form {
+  font-size: 16px;
+  padding: 10px;
+  width: 50%;
+}
+
+.preview {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-wrap: nowrap;
+}
+
+.preview-image {
+  border-radius: 50%;
+  margin: 20px;
+}
+
+.preview-reset {
+  color: red;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.preview-reset:hover {
+  cursor: pointer;
+}
+
+.results {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+}
+
+.results-players {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+}
+
+.results-player {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.results-actions {
+  margin: 10px auto;
+}
+
+.results-actions:hover {
+  cursor: pointer;
+}
+
+.results-tie {
+  margin: 10px auto;
+}
