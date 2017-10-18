@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Loading from './Loading';
+import Player from './Player';
 import axios from 'axios';
 import { battle } from '../utils/api';
 import { parse } from 'query-string';
@@ -41,14 +42,24 @@ class Results extends React.Component {
             <h1 className="results-tie">It's a tie!  No winner!</h1>
           }
           <div className="results-players">
-            <PlayerResult
-              info={playerOneInfo}
-              isWinner={playerOneScore > playerTwoScore}
-            />
-            <PlayerResult
-              info={playerTwoInfo}
-              isWinner={playerOneScore < playerTwoScore}
-            />
+            <Player
+              imageUrl={playerOneInfo.avatar_url}
+              score={playerOneInfo.score}
+              title={playerOneScore > playerTwoScore ? 'Winner' : 'Loser'}
+              username={playerOneInfo.login}
+            >
+              <p>Followers: {playerOneInfo.followers}</p>
+              <p>Public Repos: {playerOneInfo.public_repos}</p>
+            </Player>
+            <Player
+              imageUrl={playerTwoInfo.avatar_url}
+              score={playerTwoInfo.score}
+              title={playerOneScore < playerTwoScore ? 'Winner' : 'Loser'}
+              username={playerTwoInfo.login}
+            >
+              <p>Followers: {playerTwoInfo.followers}</p>
+              <p>Public Repos: {playerTwoInfo.public_repos}</p>
+            </Player>
           </div>
           <div className="results-actions">
             <Link to="/battle">
@@ -61,45 +72,10 @@ class Results extends React.Component {
       )
     } else {
       return (
-        <Loading />
+        <Loading text="Getting results" />
       )
     }
   }
 }
-
-function PlayerResult (props) {
-  const {
-    isWinner,
-    info: {
-      avatar_url,
-      followers,
-      login,
-      public_repos,
-      score,
-    },
-  } = props;
-  return (
-    <div className="results-player">
-      <h1>{ isWinner ? 'Winner' : 'Loser' }</h1>
-      <h2>Score: { score }</h2>
-      <img className="preview-image" src={avatar_url} width="200" />
-      <h2 className="preview-username">@{login}</h2>
-      <p>Followers: { followers }</p>
-      <p>Public Repos: { public_repos }</p>
-    </div>
-  );
-}
-
-PlayerResult.propTypes = {
-  info: PropTypes.object.isRequired,
-  isWinner: PropTypes.bool,
-  score: PropTypes.number,
-}
-
-PlayerResult.defaultProps = {
-  isWinner: false,
-  score: 0,
-}
-// TODO: define shape of info
 
 export default Results;

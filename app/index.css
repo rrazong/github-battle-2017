@@ -123,7 +123,7 @@ ul {
   width: 50%;
 }
 
-.preview {
+.player {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -131,18 +131,18 @@ ul {
   flex-wrap: nowrap;
 }
 
-.preview-image {
+.player-image {
   border-radius: 50%;
   margin: 20px;
 }
 
-.preview-reset {
+.player-reset {
   color: red;
   display: inline-block;
   font-size: 16px;
 }
 
-.preview-reset:hover {
+.player-reset:hover {
   cursor: pointer;
 }
 
@@ -156,12 +156,6 @@ ul {
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-around;
-}
-
-.results-player {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
 }
 
 .results-actions {

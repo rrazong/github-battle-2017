@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import Player from './Player'
 import { stringify } from 'query-string';
 
 export default class Battle extends React.Component {
@@ -38,34 +39,44 @@ export default class Battle extends React.Component {
       <div className="battle">
         <div className="battle-players">
           { !playerOneName &&
-            <Player
+            <PlayerForm
               id="playerOne"
               label="Player One"
               onSubmit={this.handleSubmit}
             />
           }
           { playerOneName &&
-            <PlayerPreview
-              id="playerOne"
+            <Player
               imageUrl={playerOneImageUrl}
               username={playerOneName}
-              onReset={this.handleReset}
-            />
+            >
+              <a
+                className="player-reset"
+                onClick={this.handleReset.bind(null, 'playerOne')}
+              >
+                Reset
+              </a>
+            </Player>
           }
           { !playerTwoName &&
-            <Player
+            <PlayerForm
               id="playerTwo"
               label="Player Two"
               onSubmit={this.handleSubmit}
             />
           }
           { playerTwoName &&
-            <PlayerPreview
-              id="playerTwo"
+            <Player
               imageUrl={playerTwoImageUrl}
               username={playerTwoName}
-              onReset={this.handleReset}
-            />
+            >
+              <a
+                className="player-reset"
+                onClick={this.handleReset.bind(null, 'playerTwo')}
+              >
+                Reset
+              </a>
+            </Player>
           }
         </div>
 
@@ -89,7 +100,7 @@ export default class Battle extends React.Component {
   }
 }
 
-class Player extends React.Component {
+class PlayerForm extends React.Component {
   static propTypes = {
     id: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
@@ -143,27 +154,4 @@ class Player extends React.Component {
       </div>
     )
   }
-}
-
-function PlayerPreview(props) {
-  const { onReset, id, imageUrl, username } = props;
-  return (
-    <div className="preview">
-      <h1 className="preview-username">@{username}</h1>
-      <img className="preview-image" src={imageUrl} width="200" />
-      <a
-        className="preview-reset"
-        onClick={onReset.bind(null, id)}
-      >
-        Reset
-      </a>
-    </div>
-  );
-}
-
-PlayerPreview.propTypes = {
-  onReset: PropTypes.func.isRequired,
-  id: PropTypes.string.isRequired,
-  imageUrl: PropTypes.string.isRequired,
-  username: PropTypes.string.isRequired,
 }

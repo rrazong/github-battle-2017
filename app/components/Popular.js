@@ -56,7 +56,7 @@ function ReposGrid (props) {
   return (
     <div>
       { isLoading
-        ? <Loading />
+        ? <Loading speed={50} />
         : (
           <ul className='repos'>
             {repos.map(function(repo, index) {
